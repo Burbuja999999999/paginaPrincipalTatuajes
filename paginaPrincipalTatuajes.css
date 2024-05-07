@@ -1,0 +1,435 @@
+@font-face {
+    font-family:fuente1 ;
+    src: url(../../font/paginaPrincipal/PaginaTatuajes/Tales\ of\ Scare\ FX.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(63, 63, 63);
+    font-family:Arial, Helvetica, sans-serif;
+    color:white;
+}
+
+
+a{
+    text-decoration:none;
+    color:inherit;
+    transition:0.6s;
+}
+
+
+input{
+    display:none;
+}
+
+/* 2. LISTA DESPLEGABLE. */
+header {
+    position: absolute;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100; 
+    position:fixed;
+}
+
+/* Logo de la pagina */
+header #logo{
+    width:100px;
+    margin-right: 12vh;
+}
+
+#opciones{
+    margin:0 0 0 -4%;
+	width:1200px;
+    
+}
+
+/* Lista normal */
+header #opciones ul{
+    list-style:none;
+}
+
+
+
+header #opciones ul li{
+	position:relative;
+	float:left;
+}
+
+header #opciones ul li a{
+	font-size:20px;
+	padding: 25px;
+	display:block;
+    margin-bottom:5px;
+}
+
+/* Lista desplegable */
+header #opciones ul li a:hover{
+	background:linear-gradient(rgb(122, 122, 122),white);
+    color: black;
+}
+
+header #opciones ul li:hover>ul{
+    visibility:visible;
+    transition:0.3s;
+    opacity:1;
+}
+
+header #opciones ul li ul{
+    visibility:hidden;
+    transition:0.3s;
+    opacity:0;
+	position:absolute;
+	width:130px;
+	background:black;
+}
+
+header #opciones ul li ul li {
+    margin:0 0 -3% -30%;          
+    text-align:center;
+    z-index:50;
+    padding: 25px;
+}
+
+/* redes */
+#redes{
+    width:200px;
+    height:50px;
+    margin-right:250px;
+    display:flex;
+    
+}
+
+
+
+.youtube{
+    width: 70px;
+    height: 70px;
+    margin-top: -6px;
+}
+
+
+.twitter{
+    width: 70px;
+    height: 60px;
+    margin-top: -3px;
+}
+
+.instagram{
+    width: 50px;
+    height: 50px;
+
+    margin-top: 1px;
+}
+
+
+/* ----------------------------------------------------------------- */
+/* 3. DISTRIBUCION. */
+#tatu{
+    width:1880px;
+    height:1300px;
+    margin:0 auto;
+    display:flex;
+}
+
+/* ----------------------------------------------------------------- */
+
+/* MEDIO. */
+#mid {
+    width: 1150px;
+    height: 1220px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    order: 2;
+    margin: 80px auto; /* Auto para centrar horizontalmente */
+    position: relative;
+    flex-wrap: wrap;
+}
+
+#intro{
+    font-size:15px;
+    font-family: fuente1;
+    letter-spacing: 2px;
+    margin-top: 55px;
+    margin-bottom: 50px;
+}
+
+/* GALERIA. */
+
+
+.image{
+    width:100%;
+    height:400px;
+    
+}
+
+.images{
+    overflow:hidden;
+    width:750px;
+}
+
+.images-inner{
+    width:500%;
+    transition:all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+    transition-timing-function:cubic-bezier(0.770, 0.000, 0.175, 1.000);
+    
+}
+
+.image-slide{
+    width:20%;
+    float:left;
+}
+
+/* Posicion de los sliders a cada transicion */
+#slide1:checked ~ .images .images-inner{margin-left:0;}
+#slide2:checked ~ .images .images-inner{margin-left:-100%;}
+#slide3:checked ~ .images .images-inner{margin-left:-200%;}
+#slide4:checked ~ .images .images-inner{margin-left:-300%;}
+#slide5:checked ~ .images .images-inner{margin-left:-400%;}
+
+/* Autoplay y tiempo entre animaciones */
+
+@keyframes slide {
+    5%,15%{margin-left:0;}
+    25%,35%{margin-left:-100%;}
+    45%,55%{margin-left:-200%;}
+    65%,75%{margin-left:-300%;}
+    85%,95%{margin-left:-400%;}
+}
+
+/* Tiempo total entre que empieza la primera IMG hasta la ultima */
+.st-slider>#play1:checked ~ .images .images-inner{animation: slide 25000ms infinite;}
+
+/* Opacidad para las IMG segun su lugar (Aunque overflow:hidden ya hace el trabajo) */
+@keyframes caption{
+    0%,33.32333333333334%{
+        opacity:1;
+    }
+    33.333333333333336%,100%{
+        opacity:0;
+    }
+
+}
+
+/* Tiempo asignado para cada IMG */
+#play1:checked ~ .labels .label:nth-child(1){animation: caption 25000ms infinite -1000ms;}
+#play1:checked ~ .labels .label:nth-child(2){animation: caption 25000ms infinite 3100ms;}
+#play1:checked ~ .labels .label:nth-child(3){animation: caption 25000ms infinite 7200ms;}
+#play1:checked ~ .labels .label:nth-child(4){animation: caption 25000ms infinite 11300ms;}
+#play1:checked ~ .labels .label:nth-child(5){animation: caption 25000ms infinite 15400ms;}
+
+#noticia {
+    width: 1000px; /* Ancho reducido para centrar */
+    height: 700px;
+    background-color: black;
+    margin-top: 600px; /* Espaciado desde el encabezado */
+    border-radius: 10%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-left: -100%;
+
+}
+
+#titularnoticia{
+    width:100%;
+    height:50px;
+    border-bottom:2px groove rgb(255, 0, 0); 
+    margin:10px 10 10 60px;
+    text-align:center;
+}
+
+#cuerpo{
+    width:1080px;
+    height:470px;
+    display:flex;
+    margin:30px 0 0 20px;
+}
+
+/* Texto (SCROLL): */
+#texto{
+    width:500px;
+    height:450px;
+    border-right:4px groove white;
+    padding:10px;
+    overflow-y:scroll;
+    text-align:justify;
+    margin-top: 50px;
+}
+
+/* Scroller personalizado */
+#texto::-webkit-scrollbar{width:10px;}
+
+#texto::-webkit-scrollbar-track {
+    border:1px solid #000;
+    padding:2px 0;
+    background-color:#404040;
+}
+
+#texto::-webkit-scrollbar-thumb{
+    border-radius:10px;
+    box-shadow:inset 0 0 6px rgba(0,0,0,.3);
+    background-color:#ff0000;
+    border:1px solid #000;
+}
+
+/* Imagen: */
+#imgNoticia{
+    width: 400px;
+    height: 450px;
+    margin-left: 480px;
+    margin-top: -600px;
+}
+
+/* ----------------------------------------------------------------- */
+/* 3.2. IZQUIERDA. */
+#izq {
+    width: 300px;
+    height: 660px;
+    margin: 50px 0 0 20px; /* Ajusta este valor según sea necesario */
+    position: absolute;
+    left: 0;
+    top: 250px;
+}
+
+
+/* 3.2.1. Video. */
+#video{
+    top:-10%;
+    position:relative;
+}
+
+/* 3.2.2. Publicidad. */
+#publi{
+    width:300px;
+    height:700px;
+    position:relative;
+}
+
+/* ----------------------------------------------------------------- */
+/* 3.3. DERECHA. */
+
+#der {
+    width: 300px;
+    height: 900px;
+    margin: 130px auto; /* Centrar verticalmente */
+    position: absolute;
+    right: calc(50% - 800px); /* Centrar horizontalmente */
+    top: 0;
+}
+
+/* 3.3.1. Frase Intro 2. */
+#trabajos2{
+    width:300px;
+    border-bottom:3px groove rgb(190, 36, 36);
+    margin-bottom:-20px;
+    position:relative;
+
+}
+
+/* 3.3.2. Clases para las paginas mas visitadas. */
+.visita{
+    width:350px;
+    height:100px;
+    border:1px solid;
+    border-radius:25%;
+    margin-top:50px;
+    overflow:hidden;  
+}
+
+.visita:hover{
+    box-shadow:0 0 80px red
+}
+
+.nombre{
+    width:300px;
+    height:20px;
+    text-align:center;
+    transition:0.5s;
+}
+
+.nombre a{border:1px solid transparent;}
+
+.nombre a:hover{
+    border-bottom:2px groove rgb(190, 36, 36);
+    transition:border-color 0.5s ease;
+}
+
+/* 3.3.3. El tiempo. */
+#tiempo{
+    height:110px;
+    width:300px;
+    margin-top:40px;
+}
+
+/* 3.3.4. Contador de visitas. */
+#contador{
+    margin:50px 10;
+    width:300px;
+    margin-top: 40px;
+}
+
+/* ----------------------------------------------------------------- */
+/* 4. PIE DE PAGINA. */
+#info{
+	float:left;
+    width:100%;
+    height:80px;
+    margin-left:-9px;
+    color:#fff;
+    background-color:#000;
+    position:absolute;
+    top:1350px;
+}
+
+/* Para encuadrar */
+#infoRetenida{
+    width:1900px;
+    height:80px;
+    margin:0 auto;
+    display:flex;
+}
+
+#tatuajesexpress{
+    width:300px;
+    height:50px;
+    margin:0 0 0 200px;
+    margin-top: 20px;
+}
+
+/* Telefono + email */
+#contacto{
+    width:400px;
+    height:50px;
+    margin:15px 0 0 100px;
+}
+
+#contacto1{
+    width:400px;
+    height:25px;
+}
+
+#contacto2{
+    width:400px;
+    height:25px;
+}
+/* Derechos */
+
+#derechos{
+    width:600px;
+    height:50px;
+    margin:15px 0 0 100px;
+
+}
+
+
